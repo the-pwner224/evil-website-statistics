@@ -1,0 +1,52 @@
+{
+	"humblebundle": {
+		"tlds": ["com"],
+		"captcha": {
+			"access": 1,
+			"login": 2,
+			"signup": 2,
+			"action": 0,
+			"other": 0,
+			"provider": "hcaptcha",
+			"notes": "super evil company"
+		},
+		"email": {
+			"email": 4,
+			"notes": ""
+		},
+		"2fa": {
+			"sms": -1,
+			"email": 1,
+			"proprietary": 0,
+			"open": 0,
+			"required": "email open",
+			"proprietaryType": "duo",
+			"notes": "test"
+		}
+	},
+	"google": {
+		"tlds": ["*"],
+		"captcha": {
+			"access": 0,
+			"login": 0,
+			"signup": 0,
+			"action": 0,
+			"other": 0,
+			"provider": "",
+			"notes": ""
+		},
+		"email": {
+			"email": 0,
+			"notes": ""
+		},
+		"2fa": {
+			"sms": 0,
+			"email": 0,
+			"proprietary": 0,
+			"open": 0,
+			"required": "",
+			"proprietaryType": "",
+			"notes": ""
+		}
+	}
+}

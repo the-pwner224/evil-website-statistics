@@ -1,0 +1,112 @@
+evilness is a number, it increases as evilness increases. 0 for unknown.
+tristate is 0/1/-1 for unknown/true/false
+
+Database format:
+
+dict of websites, arranged in alphabetical order:
+	website-basename: dict
+		tlds: list of strings, ["*"] for all TLDs
+		captcha: dict
+			access: evilness
+			login: evilness
+			signup: evilness
+			action: evilness
+			other: evilness
+			provider: string
+			notes: string
+		email: dict
+			email: evilness
+			notes: string
+		2fa: dict
+			required: tristate
+			sms: tristate
+			email: tristate
+			proprietary: tristate
+			proprietaryType: string:   lowercase
+			open: tristate
+			notes: string
+
+Template:
+	"google": {
+		"tlds": something like ["*"] or ["com", "nl", "co.uk"]
+		"email": {
+			"email": 0,
+			"notes": ""
+		},
+		"captcha": {
+			"access": 0,
+			"login": 0,
+			"signup": 0,
+			"checkout": 0,
+			"provider": "",
+			"notes": ""
+		},
+		"2fa": {
+			"sms": 0,
+			"email": 0,
+			"proprietary": 0,
+			"proprietaryType": "",
+			"open": 0,
+			"required": "",
+			"notes": ""
+		}
+	},
+
+
+
+
+
+UI has three tiers: 'ok'/'not ok'/'evil'
+
+
+
+Captcha:
+	1: no captcha
+	2: captcha after making many requests
+	   (where 'many' is low enough that a human could run into it)
+	3: captcha required
+
+	Evil captchas (recaptcha) will be considered 'evil' in the UI at level 3, and
+		'not ok' at level 2.
+	Non-evil captchas will be considered 'not ok' in the UI at level 3, and 'ok'
+		at level 2.
+
+	'action' is based on the website's primary goal - it should be set for a store
+		if a captcha is required to checkout, or for a forum if a captcha is
+		required to submit content.
+
+	'provider' is the captcha host, e.g. 'recaptcha' or 'hcaptcha' (lowercase).
+
+
+
+Email:
+	'ok:
+	1: No email spam without opt-in
+	2: Opt out available during sign up process
+
+	'not ok':
+	3: Unsubscribe link in the first nonrelevant email allows you to unsubscribe
+	   from all nonrelevant emails
+
+	'evil':
+	4: must unsubscribe individually from multiple email lists
+	5: cannot unsubscribe at all (write in notes)
+
+
+
+2fa:
+	Proprietary is for standards-based protocols with a proprietary implementation
+		layer such as Authy or Duo. Make sure to mention the proprietary company,
+		since with some (such as Duo, and probably all other ones with an Android
+		application) once you get it setup you can extract the TOTP/HOTP secrets.
+		Use 'custom' as type if they have their own app / etc.
+
+	Open is for plain TOTP/HOTP.
+
+	In notes, make sure to mention if it uses HOTP instead of TOTP, regardless of
+		open/proprietary status.
+
+	Some websites require 2fa to login. In this case required shuold be set to a
+		space-separated list of methods. For example, Amazon requires authenticating
+		with either email or their app when you log in, so required should be:
+		"email proprietary"

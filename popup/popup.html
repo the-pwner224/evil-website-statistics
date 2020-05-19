@@ -1,0 +1,128 @@
+<!--
+    Copyright 2020  the_pwner224 <the_pwner224@fastmail.com>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+
+<style>
+html {
+	background-color: #111;
+	color: #eee;
+	font: sans-serif;
+}
+img {
+	height: 1em;
+	vertical-align: middle;
+}
+p {
+	text-align: center;
+}
+table {
+	width: 600px;
+	table-layout: fixed;
+}
+thead {
+	color: #ddd;
+}
+table, td {
+	border: 1px solid #000;
+	border-collapse: collapse;
+	text-align: center;
+	color: #333;
+	background-color: #222;
+}
+</style>
+
+	</head>
+
+	<body>
+
+		<p id="domain">Nothing loaded yet...</p>
+		<p id="notFoundNotice">No entry found in database</p>
+
+
+		<table>
+			<thead id="captcha-thead">
+				<tr>
+					<th colspan="5" id="captcha-th">Captcha</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="captcha-tr">
+					<td>Access</td>
+					<td>Login</td>
+					<td>Signup</td>
+					<td>Action</td>
+					<td>Other</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<br/>
+
+		<table id="email-table">
+			<tbody>
+				<tr>
+					<th id="email-th">Email spam</th>
+				</tr>
+			<tbody>
+		</table>
+
+		<br/>
+
+		<table>
+			<thead id="2fa-thead">
+				<tr>
+					<th colspan="4" id="2fa-th">2FA</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="2fa-tr">
+					<td>SMS</td>
+					<td>Email</td>
+					<td>Proprietary</td>
+					<td>Open</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<br/>
+
+		<p id="notes-title"><b>NOTES</b></p>
+
+		<p style="text-align: left; margin-bottom: 0;" id="notes-captcha-title">Captcha</p>
+		<hr style="margin: 0; padding: 0;" id="notes-captcha-hr">
+		<p style="text-align: left; margin-top: 0;" id="notes-captcha"></p>
+
+		<p style="text-align: left; margin-bottom: 0;" id="notes-email-title">Email</p>
+		<hr style="margin: 0; padding: 0;" id="notes-email-hr">
+		<p style="text-align: left; margin-top: 0;" id="notes-email"></p>
+
+		<p style="text-align: left; margin-bottom: 0;" id="notes-2fa-title">2fa</p>
+		<hr style="margin: 0; padding: 0;" id="notes-2fa-hr">
+		<p style="text-align: left; margin-top: 0;" id="notes-2fa"></p>
+
+		<p id="lastDbUpdateTime">Last database update: ? ago</p>
+
+		<!-- centering stuff is hard... -->
+		<input id="forceDbUpdateButton" type="button" value="Update database" />
+
+		<script src="popup.js"></script>
+	</body>
+</html>
